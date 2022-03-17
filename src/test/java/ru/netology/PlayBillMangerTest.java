@@ -1,6 +1,8 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
+import ru.netology.domain.Movie;
+import ru.netology.manager.PlayBillManger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,6 +65,41 @@ class PlayBillMangerTest {
         playBillManger.addMovie(movie4);
         playBillManger.addMovie(movie5);
         playBillManger.addMovie(movie6);
+        Movie[] actual = playBillManger.findLast();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindLastMoviesLessNumShowDefault() {
+        Movie[] expected = new Movie[]{movie4, movie3, movie2, movie1};
+        PlayBillManger playBillManger = new PlayBillManger();
+        playBillManger.addMovie(movie1);
+        playBillManger.addMovie(movie2);
+        playBillManger.addMovie(movie3);
+        playBillManger.addMovie(movie4);
+        Movie[] actual = playBillManger.findLast();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindLastMoviesMoreNumShowDefault() {
+        Movie[] expected = new Movie[]{movie15, movie14, movie13, movie12, movie11,movie10, movie9, movie8, movie7, movie6};
+        PlayBillManger playBillManger = new PlayBillManger();
+        playBillManger.addMovie(movie1);
+        playBillManger.addMovie(movie2);
+        playBillManger.addMovie(movie3);
+        playBillManger.addMovie(movie4);
+        playBillManger.addMovie(movie5);
+        playBillManger.addMovie(movie6);
+        playBillManger.addMovie(movie7);
+        playBillManger.addMovie(movie8);
+        playBillManger.addMovie(movie9);
+        playBillManger.addMovie(movie10);
+        playBillManger.addMovie(movie11);
+        playBillManger.addMovie(movie12);
+        playBillManger.addMovie(movie13);
+        playBillManger.addMovie(movie14);
+        playBillManger.addMovie(movie15);
         Movie[] actual = playBillManger.findLast();
         assertArrayEquals(expected, actual);
     }

@@ -1,12 +1,13 @@
-package ru.netology;
+package ru.netology.manager;
 
 import lombok.NoArgsConstructor;
+import ru.netology.domain.Movie;
 
 @NoArgsConstructor
 
 public class PlayBillManger {
     private Movie[] movies = new Movie[0];
-    int numShowMovies = 10;
+    private int numShowMovies = 10;
 
     public PlayBillManger(int numShowMovies) {
         this.numShowMovies = numShowMovies;
@@ -14,9 +15,7 @@ public class PlayBillManger {
 
     public void addMovie(Movie movie) {
         Movie[] tmp = new Movie[movies.length + 1];
-        for (int i = 0; i < movies.length; i++) {
-            tmp[i] = movies[i];
-        }
+        System.arraycopy(movies, 0, tmp, 0, movies.length);
         tmp[tmp.length - 1] = movie;
         movies = tmp;
     }

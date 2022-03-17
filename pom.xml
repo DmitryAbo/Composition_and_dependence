@@ -69,7 +69,7 @@
                                     <element>CLASS</element>
                                     <excludes>
                                         <exclude>*test</exclude>
-                                        <exclude>ru.netology.Movie</exclude>
+                                        <exclude>ru.netology.domain.Movie</exclude>
                                     </excludes>
                                     <limits>
                                         <limit>
