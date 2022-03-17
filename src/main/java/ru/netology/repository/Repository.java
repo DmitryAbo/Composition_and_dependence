@@ -1,14 +1,14 @@
-package ru.netology;
+package ru.netology.repository;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import ru.netology.domain.Movie;
 
 @NoArgsConstructor
 
 public class Repository {
 
     private Movie[] movies = new Movie[0];
-    private int numShowMovies = 5;
+    private int numShowMovies = 10;
 
     public void save(Movie movie) {
         Movie[] tmp = new Movie[movies.length + 1];
@@ -19,11 +19,11 @@ public class Repository {
         movies = tmp;
     }
 
-    public void removeById(Movie moviedelete) {
+    public void removeById(Movie movieDelete) {
         Movie[] tmp = new Movie[movies.length - 1];
         int copyToIndex = 0;
         for (int i = 0; i < movies.length; i++) {
-            if (movies[i].getId() != moviedelete.getId()) {
+            if (movies[i].getId() != movieDelete.getId()) {
                 tmp[copyToIndex] = movies[i];
                 copyToIndex++;
             }
@@ -33,15 +33,12 @@ public class Repository {
 
     public Movie findById(int id) {
         Movie result = new Movie();
-        for (int i = 0; i < movies.length; i++) {
-            if (movies[i].getId() == id) {
-                result = movies[i];
-                break;
-            } else {
-                result = null;
+        for (Movie movie : movies) {
+            if (movie.getId() == id) {
+                return (movie);
             }
         }
-        return (result);
+        return null;
     }
 
     public Movie[] findAll() {
@@ -51,7 +48,7 @@ public class Repository {
     }
 
     public void removeAll() {
-        movies = null;
+        movies = new Movie[0];
     }
 
     public Movie[] findLast() {
